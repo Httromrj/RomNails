@@ -1,0 +1,111 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+:root {
+  font-family: 'Inter', sans-serif;
+  color: #0d0d12;
+  background: #faf8f5;
+  font-synthesis: none;
+  text-rendering: optimizeLegibility;
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+html {
+  scroll-behavior: smooth;
+}
+
+body {
+  margin: 0;
+  min-width: 320px;
+  background:
+    radial-gradient(circle at top left, rgba(201, 168, 76, 0.14), transparent 28%),
+    linear-gradient(180deg, #fcfbf8 0%, #f3efe8 100%);
+}
+
+body::selection {
+  background: rgba(201, 168, 76, 0.28);
+}
+
+#root {
+  min-height: 100vh;
+}
+
+.noise-overlay {
+  pointer-events: none;
+  position: fixed;
+  inset: 0;
+  opacity: 0.05;
+  mix-blend-mode: multiply;
+  filter: url(#noiseFilter);
+  z-index: 80;
+}
+
+@layer base {
+  * {
+    box-sizing: border-box;
+  }
+
+  a {
+    text-decoration: none;
+  }
+}
+
+@layer components {
+  .section-shell {
+    @apply px-4 py-8 md:px-10 md:py-14 lg:px-14 lg:py-16;
+  }
+
+  .eyebrow {
+    @apply mb-4 font-mono text-[11px] uppercase tracking-[0.34em] text-[var(--color-accent)];
+  }
+
+  .section-title {
+    @apply font-heading text-[clamp(2.2rem,5vw,5rem)] font-semibold uppercase leading-[0.92] tracking-[-0.06em];
+  }
+
+  .feature-card {
+    @apply rounded-[2rem] md:rounded-[2.5rem] border border-[var(--color-border)] bg-[rgba(255,255,255,0.7)] p-5 md:p-6 shadow-[0_20px_60px_rgba(13,13,18,0.08)] backdrop-blur-sm;
+  }
+
+  .feature-title {
+    @apply font-heading text-[1.9rem] md:text-2xl font-semibold uppercase tracking-[-0.04em] text-[var(--color-primary)];
+  }
+
+  .feature-description {
+    @apply mt-2 text-sm leading-7 text-[var(--color-body)];
+  }
+
+  .protocol-stage {
+    @apply min-h-[92vh];
+  }
+
+  .protocol-card {
+    @apply rounded-[3rem] border border-[var(--color-border)] bg-[rgba(255,255,255,0.88)] p-6 shadow-[0_24px_80px_rgba(13,13,18,0.08)] backdrop-blur-sm md:p-8 lg:p-10;
+  }
+
+  .footer-label {
+    @apply font-mono text-[11px] uppercase tracking-[0.34em] text-white/40;
+  }
+}
+
+@layer utilities {
+  .font-heading {
+    font-family: 'Inter', sans-serif;
+  }
+
+  .font-drama {
+    font-family: 'Playfair Display', serif;
+  }
+
+  .font-mono {
+    font-family: 'JetBrains Mono', monospace;
+  }
+}
+
+@media (max-width: 767px) {
+  .protocol-card {
+    min-height: auto;
+  }
+}
